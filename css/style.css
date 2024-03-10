@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "averta cy w10";
+  font-size: 15px;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+input {
+  padding: 10px;
+  color: white;
+  background-color: black;
+  outline: none;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+.submit-btn {
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 2px solid white;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+}
+.card-container {
+  display: flex;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+.card {
+  width: 150px;
+  height: 150px;
+  border-radius: 5px;
+  border: 2px solid white;
+  margin-top: 10px;
+}
+
+.card-item {
+  padding: 0px 10px;
+}
+
+.mrpValue {
+  font-size: 10px;
+  color: white;
+  margin-top: 12px;
+}
+.sellValue {
+  margin-top: 13px;
+  font-size: 10px;
+  color: white;
+}
+
+.productName {
+  margin-top: 13px;
+  color: white;
+  font-size: 10px;
+}
+
+.Quantity {
+  margin-top: 13px;
+  color: white;
+  font-size: 12px;
+}
+
+.store-value {
+  display: flex;
+}
+.value {
+  font-size: 10px;
+  padding-left: 7px;
+  text-transform: capitalize;
+}
+.button-container {
+  color: white;
+  height: 30px;
+  width: 150px;
+  border-radius: 5px;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  margin-top: 12px;
+  padding: 5px;
+  justify-content: space-between;
+}
+.btn {
+  font-size: 13px;
+  background-color: black;
+  color: white;
+  border: 0;
+  cursor: pointer;
+}
+
+.edit-container {
+  width: 300px;
+  height: 300px;
+  border: 2px solid white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.edit-input {
+  margin-top: 10px;
+}
+
+#submit-edit-btn {
+  margin-top: 10px;
+  background-color: black;
+  color: white;
+  text-transform: capitalize;
+  border-radius: 5px;
+  border: 2px solid white;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+#icon-div {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  position: relative;
+  top: 0;
+  left: 85%;
+}
+i {
+  color: white;
+  cursor: pointer;
+}
