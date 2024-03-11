@@ -22,16 +22,18 @@ container.addEventListener("click", function (event) {
     makeCards(mrpInput, sellInput, productInput, quantityInput);
   }
   if (event.target.classList[0] === "delete") {
-    document.querySelector(".card").remove();
+    event.target.parentElement.parentElement.remove();
   }
   if (event.target.classList[0] === "edit") {
     containerItem.style.display = "none";
     document.body.classList.add("center");
-    editFunctionality();
+    editFunctionality(event.target);
   }
   if (event.target.classList[2] === "close") {
-    containerItem.style.display = "block";
-    document.body.classList.remove("center");
+    showHideEditContainer();
+  }
+  if (event.target.id === "submit-edit-btn") {
+    editInputValue(event.target);
   }
 });
 
@@ -159,21 +161,38 @@ function makeCards(mrpValue, sellValue, productName, Quantity) {
 }
 
 const placeHolderNames = ["ProductName", "Mrp", "ProductPrice", "Quantity"];
-const editFunctionality = () => {
+const className = [
+  "product-edit",
+  "mrp-edit",
+  "productPrice-edit",
+  "quanity-edit",
+];
+const editFunctionality = (getElement) => {
   const editContainer = makeAndFixElement(
     "div",
     "class",
     "edit-container",
     container
   );
+
+  const getCard = getElement.parentElement.parentElement;
+
+  const productInfo = [
+    getCard.querySelector(".mrp-Value").innerText,
+    getCard.querySelector(".sell-Value").innerText,
+    getCard.querySelector(".product-name").innerText,
+    getCard.querySelector(".Quantity-value").innerText,
+  ];
+
   const iconsDiv = makeAndFixElement("div", "id", "icon-div", editContainer);
   for (let i = 0; i <= 3; i++) {
     const inputs = makeAndFixElement(
       "input",
       "class",
-      "edit-input",
+      `edit-input ${className[i]}`,
       editContainer
     );
+    inputs.value = productInfo[i];
     inputs.setAttribute("placeholder", placeHolderNames[i]);
   }
   const editButton = makeAndFixElement(
@@ -186,6 +205,38 @@ const editFunctionality = () => {
   iconsDiv.innerHTML = '<i class="bx bx-x close"></i>';
   editButton.innerText = "submit Edit";
 };
+
+function showHideEditContainer() {
+  document.body.classList.remove("center");
+  const editContainer = qS(".edit-container");
+  editContainer.style.display = "none";
+  containerItem.style.display = "block";
+}
+
+function editInputValue(getElement) {
+  const parentContainer = getElement.parentElement;
+
+  const productNewValue = parentContainer.querySelector(".product-edit");
+  const mrpNewValue = parentContainer.querySelector(".mrp-edit");
+  const productPriceNewValue =
+    parentContainer.querySelector(".productPrice-edit");
+  const quanityNewValue = parentContainer.querySelector(".quanity-edit");
+
+  const newMrpValue = qS(".mrp-Value");
+  const newSellValue = qS(".sell-Value");
+  const newProductalue = qS(".product-name");
+  const newQuantityValue = qS(".Quantity-value");
+
+  newMrpValue.innerText = productNewValue.value;
+  newSellValue.innerText = mrpNewValue.value;
+  newProductalue.innerText = productPriceNewValue.value;
+  newQuantityValue.innerText = quanityNewValue.value;
+
+  document.body.classList.remove("center");
+  const editContainer = qS(".edit-container");
+  editContainer.style.display = "none";
+  containerItem.style.display = "block";
+}
 
 fragment.append(container);
 document.body.append(fragment);
